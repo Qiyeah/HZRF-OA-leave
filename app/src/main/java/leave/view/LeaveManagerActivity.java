@@ -2,13 +2,9 @@ package leave.view;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -21,18 +17,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import leave.XPopupWindow;
 import leave.base.BaseActivity;
 import leave.base.BaseFragment;
-import leave.base.RequestCode;
+import leave.constant.Constants;
+import leave.constant.RequestCode;
 import leave.bean.LeaveBean;
 import leave.bean.LeaveRoot;
 import leave.presenter.LeavePresenter;
 import leave.util.CacheUtil;
 import leave.util.LogUtil;
-import leave.util.WindowUtil;
 
 /**
  * Created by Administrator on 2017-12-28.
@@ -69,9 +63,9 @@ public class LeaveManagerActivity extends BaseActivity implements ILeaveView {
 
     private LeavePresenter mPresenter = null;
 
-    private List<LeaveBean> mLeaveList;// 待批列表数据
+    private List<LeaveBean> mLeaveList = new ArrayList<>();// 待批列表数据
 
-    private List<LeaveBean> mApproveList;//已批列表数据
+    private List<LeaveBean> mApproveList  = new ArrayList<>();//已批列表数据
 
     private LeaveBean mCacheApply;//用户缓存的请休假申请
     private FragmentPagerAdapter mAdapter;
@@ -81,10 +75,10 @@ public class LeaveManagerActivity extends BaseActivity implements ILeaveView {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (RESULT_OK == resultCode){
-            switch (requestCode) {
+//        if (RESULT_OK == resultCode){
+            switch (resultCode) {
                 case RequestCode.NEW:
-                    mCacheApply = (LeaveBean) data.getSerializableExtra("leave");
+                    mCacheApply = (LeaveBean) data.getSerializableExtra(Constants.cacheApplyKey);
                     if (null != mCacheApply)
                         mLeaveList.add(mCacheApply);
                     changeTabs(0);
@@ -96,7 +90,7 @@ public class LeaveManagerActivity extends BaseActivity implements ILeaveView {
                     changeTabs(1);
                     break;
             }
-        }
+//        }
     }
 
     /**
@@ -202,6 +196,7 @@ public class LeaveManagerActivity extends BaseActivity implements ILeaveView {
      */
     @OnClick(R.id.iv_back)
     public void onMIvBackClicked() {
+
     }
 
     @OnClick(R.id.bt_apply)
@@ -214,6 +209,7 @@ public class LeaveManagerActivity extends BaseActivity implements ILeaveView {
             mCacheApply.setMarried(true);
         }
         intent.putExtra("leave", mCacheApply);
+        intent.putExtra("request_code",RequestCode.NEW);
         startActivityForResult(intent, RequestCode.NEW);
     }
 

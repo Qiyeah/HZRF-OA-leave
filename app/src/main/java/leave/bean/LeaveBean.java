@@ -20,7 +20,7 @@ public class LeaveBean implements Serializable {
     private String approvedate;//申请时间(applydate)
     private String begindate;//起时间
     private String enddate;//止时间
-    private int reason;//请休假事由
+    private String reason;//请休假事由
     private List<T_FJList> fjLists;//附件列表
     private String opinion1;//科室意见
     private String opinion2;//副主任意见
@@ -69,7 +69,7 @@ public class LeaveBean implements Serializable {
         this.dname = dname;
     }
 
-    public boolean isMarried() {
+    public boolean getMarried() {
         return married;
     }
 
@@ -109,11 +109,11 @@ public class LeaveBean implements Serializable {
         this.enddate = enddate;
     }
 
-    public int getReason() {
+    public String getReason() {
         return reason;
     }
 
-    public void setReason(int reason) {
+    public void setReason(String reason) {
         this.reason = reason;
     }
 
