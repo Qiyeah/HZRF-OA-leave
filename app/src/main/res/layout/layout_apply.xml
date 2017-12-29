@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+    <FrameLayout
+        android:paddingTop="1dp"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:background="#dcdcdc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:stretchColumns="0,1,2,3">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_height="match_parent"
+                    android:background="@color/tab_bg_green"
+                    android:gravity="center"
+                    android:text="申 请 人"
+                    />
+
+                <TextView
+                    android:id="@+id/uname"
+                    android:layout_width="@dimen/tab_col_width"
+                    android:layout_height="@dimen/tab_row_height"
+                    android:background="@drawable/shape_edit_bg"
+                    android:gravity="center"
+                    android:minHeight="0dp"
+                    android:text=""/>
+
+                <TextView
+                    android:layout_height="match_parent"
+                    android:background="@color/tab_bg_green"
+                    android:gravity="center"
+                    android:text="所在科室"
+                    />
+
+                <TextView
+                    android:id="@+id/dname"
+                    android:layout_width="@dimen/tab_col_width"
+                    android:layout_height="@dimen/tab_row_height"
+                    android:background="@drawable/shape_edit_bg"
+                    android:gravity="center"
+                    android:text=""
+                    />
+            </TableRow>
+
+            <TableRow android:layout_marginTop="1dp">
+
+                <TextView
+                    android:layout_height="match_parent"
+                    android:background="@color/tab_bg_green"
+                    android:gravity="center"
+                    android:text="请休假类型"
+                    />
+
+                <EditText
+                    android:id="@+id/type"
+                    android:layout_width="@dimen/tab_col_width"
+                    android:layout_height="@dimen/tab_row_height"
+                    android:background="@drawable/shape_edit_bg"
+                    android:text=""/>
+
+                <TextView
+                    android:layout_height="match_parent"
+                    android:background="@color/tab_bg_green"
+                    android:gravity="center"
+                    android:text="婚姻状态"
+                    />
+
+                <EditText
+                    android:id="@+id/married"
+                    android:layout_width="@dimen/tab_col_width"
+                    android:layout_height="@dimen/tab_row_height"
+                    android:background="@drawable/shape_edit_bg"
+                    android:text=""
+                    />
+            </TableRow>
+
+            <TableRow android:layout_marginTop="1dp">
+
+                <TextView
+                    android:layout_height="match_parent"
+                    android:background="@color/tab_bg_green"
+                    android:gravity="center"
+                    android:text="申请时间"
+                    />
+
+                <EditText
+                    android:id="@+id/approvedate"
+                    android:layout_width="@dimen/tab_col_width"
+                    android:layout_height="@dimen/tab_row_height"
+                    android:background="@drawable/shape_edit_bg"
+                    android:text=""/>
+
+                <TextView
+                    android:layout_height="match_parent"
+                    android:background="@color/tab_bg_green"
+                    android:gravity="center"
+                    android:text="请休假天数"
+                    />
+
+                <EditText
+                    android:id="@+id/dayt"
+                    android:layout_width="@dimen/tab_col_width"
+                    android:layout_height="@dimen/tab_row_height"
+                    android:background="@drawable/shape_edit_bg"
+                    android:text=""
+                    />
+            </TableRow>
+
+            <TableRow android:layout_marginTop="1dp">
+
+                <TextView
+                    android:layout_height="match_parent"
+                    android:background="@color/tab_bg_green"
+                    android:gravity="center"
+                    android:text="开始时间"
+                    />
+
+                <EditText
+                    android:id="@+id/begindate"
+                    android:layout_width="@dimen/tab_col_width"
+                    android:layout_height="@dimen/tab_row_height"
+                    android:background="@drawable/shape_edit_bg"
+                    android:text=""/>
+
+                <TextView
+                    android:layout_height="match_parent"
+                    android:background="@color/tab_bg_green"
+                    android:gravity="center"
+                    android:text="结束时间"
+                    />
+
+                <EditText
+                    android:id="@+id/enddate"
+                    android:layout_width="@dimen/tab_col_width"
+                    android:layout_height="@dimen/tab_row_height"
+                    android:background="@drawable/shape_edit_bg"
+                    android:text=""
+                    />
+            </TableRow>
+
+            <TableRow android:layout_marginTop="1dp">
+
+                <TextView
+                    android:layout_height="match_parent"
+                    android:background="@color/tab_bg_green"
+                    android:gravity="center"
+                    android:text="请休假事由"
+                    />
+
+                <EditText
+                    android:id="@+id/reason"
+                    android:layout_height="@dimen/tab_row_height"
+                    android:layout_span="3"
+                    android:background="@drawable/shape_edit_bg"
+                    android:text=""/>
+
+
+            </TableRow>
+
+            <TableRow android:layout_marginTop="1dp">
+
+                <TextView
+                    android:layout_height="match_parent"
+                    android:background="@color/tab_bg_green"
+                    android:gravity="center"
+                    android:text="附件列表"
+                    />
+
+                <LinearLayout
+                    android:layout_height="@dimen/tab_row_height1"
+                    android:layout_span="3"
+                    android:background="@drawable/shape_edit_bg">
+
+                    <leave.NoScrollListView
+                        android:id="@+id/fj_list"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="4"
+                        android:descendantFocusability="blocksDescendants"
+                        android:divider="#F5F5F5"
+                        android:dividerHeight="1dip"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"/>
+                </LinearLayout>
+
+
+            </TableRow>
+
+            <TableRow android:layout_marginTop="1dp">
+
+                <TextView
+                    android:layout_height="match_parent"
+                    android:background="@color/tab_bg_green"
+                    android:gravity="center"
+                    android:text="科室意见"
+                    />
+
+                <EditText
+                    android:id="@+id/opinion1"
+                    android:layout_height="@dimen/tab_row_height1"
+                    android:layout_span="3"
+                    android:background="@drawable/shape_edit_bg"
+                    android:text=""/>
+
+
+            </TableRow>
+
+            <TableRow android:layout_marginTop="1dp">
+
+                <TextView
+                    android:layout_height="match_parent"
+                    android:background="@color/tab_bg_green"
+                    android:gravity="center"
+                    android:text="副主任意见"
+                    />
+
+                <EditText
+                    android:id="@+id/opinion2"
+                    android:layout_height="@dimen/tab_row_height1"
+                    android:layout_span="3"
+                    android:background="@drawable/shape_edit_bg"
+                    android:text=""/>
+
+
+            </TableRow>
+
+            <TableRow android:layout_marginTop="1dp">
+
+                <TextView
+                    android:layout_height="match_parent"
+                    android:background="@color/tab_bg_green"
+                    android:gravity="center"
+                    android:text="主任意见"
+                    />
+
+                <EditText
+                    android:id="@+id/opinion3"
+                    android:layout_height="@dimen/tab_row_height1"
+                    android:layout_span="3"
+                    android:background="@drawable/shape_edit_bg"
+                    android:text=""/>
+
+
+            </TableRow>
+
+            <TableRow android:layout_marginTop="1dp">
+
+                <TextView
+                    android:layout_height="match_parent"
+                    android:background="@color/tab_bg_green"
+                    android:gravity="center"
+                    android:text="销假时间"
+                    />
+
+                <EditText
+                    android:id="@+id/backdate"
+                    android:layout_width="@dimen/tab_col_width"
+                    android:layout_height="@dimen/tab_row_height"
+                    android:background="@drawable/shape_edit_bg"
+                    android:text=""/>
+
+                <TextView
+                    android:layout_height="match_parent"
+                    android:background="@color/tab_bg_green"
+                    android:gravity="center"
+                    android:text="实际天数"
+                    />
+
+                <EditText
+                    android:id="@+id/days"
+                    android:layout_width="@dimen/tab_col_width"
+                    android:layout_height="@dimen/tab_row_height"
+                    android:background="@drawable/shape_edit_bg"
+                    android:text=""
+                    />
+            </TableRow>
+
+            <TableRow android:layout_marginTop="1dp">
+
+                <RelativeLayout android:layout_span="4">
+
+                    <Button
+                        android:id="@+id/bt_submit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="提交"
+                        android:textSize="12sp"/>
+                    <Button
+                        android:id="@+id/bt_save"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="保存"
+                        android:textSize="12sp"
+                        android:layout_alignParentTop="true"
+                        android:layout_toRightOf="@+id/bt_submit"
+                        android:layout_toEndOf="@+id/bt_submit"/>
+                    <Button
+                        android:id="@+id/bt_cancel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="24dp"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="取消"
+                        android:textSize="12sp"
+                        android:visibility="visible"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="24dp"/>
+
+                    <Button
+                        android:id="@+id/bt_return"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="退回"
+                        android:textSize="12sp"
+                        android:visibility="visible"
+                        android:layout_alignParentTop="true"
+                        android:layout_toLeftOf="@+id/bt_cancel"
+                        android:layout_toStartOf="@+id/bt_cancel"/>
+                </RelativeLayout>
+            </TableRow>
+        </TableLayout>
+
+        <!--<RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/bt_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="103dp"
+                android:layout_marginStart="103dp"
+                android:layout_marginTop="227dp"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:text="附件上传"
+                android:textSize="8sp"
+                android:visibility="visible"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+
+            <Button
+                android:id="@+id/bt_opinion1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="52dp"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:text="填写意见"
+                android:textSize="8sp"
+                android:visibility="visible"
+                android:layout_below="@+id/bt_update"
+                android:layout_alignLeft="@+id/bt_update"
+                android:layout_alignStart="@+id/bt_update"/>
+
+            <Button
+                android:id="@+id/bt_opinion2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="53dp"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:text="填写意见"
+                android:textSize="8sp"
+                android:visibility="visible"
+                android:layout_below="@+id/bt_opinion1"
+                android:layout_alignLeft="@+id/bt_opinion1"
+                android:layout_alignStart="@+id/bt_opinion1"/>
+
+            <Button
+                android:id="@+id/bt_opinion3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="52dp"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:text="填写意见"
+                android:textSize="8sp"
+                android:visibility="visible"
+                android:layout_below="@+id/bt_opinion2"
+                android:layout_alignLeft="@+id/bt_opinion2"
+                android:layout_alignStart="@+id/bt_opinion2"/>
+
+
+        </RelativeLayout>-->
+    </FrameLayout>
+
+</ScrollView>
