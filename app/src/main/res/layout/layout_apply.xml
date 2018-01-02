@@ -6,7 +6,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#dcdcdc"
+        android:background="@color/tab_bg_light_blue"
         android:paddingLeft="3dp"
         android:paddingRight="3dp"
         android:paddingTop="1dp">
@@ -22,7 +22,7 @@
 
                 <TextView
                     android:layout_height="match_parent"
-                    android:background="@color/tab_bg_green"
+                    android:background="@color/tab_bg_light_blue"
                     android:gravity="center"
                     android:text="申 请 人"
                     />
@@ -31,14 +31,14 @@
                     android:id="@+id/uname"
                     android:layout_width="@dimen/tab_col_width"
                     android:layout_height="@dimen/tab_row_height"
-                    android:background="@drawable/shape_edit_bg"
+                    android:background="@drawable/shape_text_bg"
                     android:gravity="center"
                     android:minHeight="0dp"
                     android:text=""/>
 
                 <TextView
                     android:layout_height="match_parent"
-                    android:background="@color/tab_bg_green"
+                    android:background="@color/tab_bg_light_blue"
                     android:gravity="center"
                     android:text="所在科室"
                     />
@@ -47,113 +47,143 @@
                     android:id="@+id/dname"
                     android:layout_width="@dimen/tab_col_width"
                     android:layout_height="@dimen/tab_row_height"
-                    android:background="@drawable/shape_edit_bg"
+                    android:background="@drawable/shape_text_bg"
                     android:gravity="center"
                     android:text=""
                     />
             </TableRow>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#DCDCDC"/>
             <!--类型、婚否-->
             <TableRow android:layout_marginTop="1dp">
 
                 <TextView
                     android:layout_height="match_parent"
-                    android:background="@color/tab_bg_green"
+                    android:background="@color/tab_bg_light_blue"
                     android:gravity="center"
                     android:text="请休假类型"
                     />
 
-                <EditText
+                <Spinner
                     android:id="@+id/type"
                     android:layout_width="@dimen/tab_col_width"
                     android:layout_height="@dimen/tab_row_height"
                     android:background="@drawable/shape_edit_bg"
-                    android:text=""/>
+                    android:entries="@array/languages"
+                    android:gravity="center"
+                    android:text="类型"
+                    android:textSize="@dimen/tab_et_size"/>
 
                 <TextView
                     android:layout_height="match_parent"
-                    android:background="@color/tab_bg_green"
+                    android:background="@color/tab_bg_light_blue"
                     android:gravity="center"
                     android:text="婚姻状态"
                     />
 
-                <EditText
+
+
+                <TextView
                     android:id="@+id/married"
                     android:layout_width="@dimen/tab_col_width"
                     android:layout_height="@dimen/tab_row_height"
-                    android:background="@drawable/shape_edit_bg"
+                    android:background="@drawable/shape_text_bg"
+                    android:gravity="center"
                     android:text=""
                     />
             </TableRow>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#DCDCDC"/>
             <!--申请时间、天数-->
             <TableRow android:layout_marginTop="1dp">
 
                 <TextView
                     android:layout_height="match_parent"
-                    android:background="@color/tab_bg_green"
+                    android:background="@color/tab_bg_light_blue"
                     android:gravity="center"
                     android:text="申请时间"
                     />
 
-                <EditText
+                <TextView
                     android:id="@+id/approvedate"
                     android:layout_width="@dimen/tab_col_width"
                     android:layout_height="@dimen/tab_row_height"
                     android:background="@drawable/shape_edit_bg"
-                    android:text=""/>
+                    android:gravity="center"
+                    android:text=""
+                    android:textSize="@dimen/tab_et_size"/>
 
                 <TextView
                     android:layout_height="match_parent"
-                    android:background="@color/tab_bg_green"
+                    android:background="@color/tab_bg_light_blue"
                     android:gravity="center"
                     android:text="请休假天数"
                     />
 
-                <EditText
+                <TextView
                     android:id="@+id/dayt"
                     android:layout_width="@dimen/tab_col_width"
                     android:layout_height="@dimen/tab_row_height"
-                    android:background="@drawable/shape_edit_bg"
+                    android:background="@drawable/shape_text_bg"
+                    android:gravity="center"
                     android:text=""
+                    android:textSize="@dimen/tab_et_size"
                     />
             </TableRow>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#DCDCDC"/>
             <!--起止时间-->
             <TableRow android:layout_marginTop="1dp">
 
                 <TextView
                     android:layout_height="match_parent"
-                    android:background="@color/tab_bg_green"
+                    android:background="@color/tab_bg_light_blue"
                     android:gravity="center"
                     android:text="开始时间"
                     />
 
-                <EditText
+                <TextView
                     android:id="@+id/begindate"
                     android:layout_width="@dimen/tab_col_width"
                     android:layout_height="@dimen/tab_row_height"
                     android:background="@drawable/shape_edit_bg"
-                    android:text=""/>
+                    android:gravity="center"
+                    android:text="2018-10-1"
+                    android:textSize="@dimen/tab_et_size"/>
 
                 <TextView
                     android:layout_height="match_parent"
-                    android:background="@color/tab_bg_green"
+                    android:background="@color/tab_bg_light_blue"
                     android:gravity="center"
                     android:text="结束时间"
                     />
 
-                <EditText
+                <TextView
                     android:id="@+id/enddate"
                     android:layout_width="@dimen/tab_col_width"
                     android:layout_height="@dimen/tab_row_height"
                     android:background="@drawable/shape_edit_bg"
+                    android:gravity="center"
                     android:text=""
+                    android:textSize="@dimen/tab_et_size"
                     />
             </TableRow>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#DCDCDC"/>
             <!--请休假事由-->
             <TableRow android:layout_marginTop="1dp">
 
                 <TextView
                     android:layout_height="match_parent"
-                    android:background="@color/tab_bg_green"
+                    android:background="@color/tab_bg_light_blue"
                     android:gravity="center"
                     android:text="请休假事由"
                     />
@@ -163,16 +193,21 @@
                     android:layout_height="@dimen/tab_row_height1"
                     android:layout_span="3"
                     android:background="@drawable/shape_edit_bg"
-                    android:text=""/>
+                    android:text=""
+                    android:textSize="@dimen/tab_et_size"/>
 
 
             </TableRow>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#DCDCDC"/>
             <!--附件列表-->
             <TableRow android:layout_marginTop="1dp">
 
                 <TextView
                     android:layout_height="match_parent"
-                    android:background="@color/tab_bg_green"
+                    android:background="@color/tab_bg_light_blue"
                     android:gravity="center"
                     android:text="附件列表"
                     />
@@ -197,31 +232,40 @@
 
 
             </TableRow>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#DCDCDC"/>
             <!--科室意见-->
             <TableRow android:layout_marginTop="1dp">
 
                 <TextView
                     android:layout_height="match_parent"
-                    android:background="@color/tab_bg_green"
+                    android:background="@color/tab_bg_light_blue"
                     android:gravity="center"
                     android:text="科室意见"
                     />
 
-                <EditText
+                <TextView
                     android:id="@+id/opinion1"
                     android:layout_height="@dimen/tab_row_height1"
                     android:layout_span="3"
                     android:background="@drawable/shape_edit_bg"
-                    android:text=""/>
+                    android:text=""
+                    android:textSize="@dimen/tab_et_size"/>
 
 
             </TableRow>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#DCDCDC"/>
             <!--副主任意见-->
             <TableRow android:layout_marginTop="1dp">
 
                 <TextView
                     android:layout_height="match_parent"
-                    android:background="@color/tab_bg_green"
+                    android:background="@color/tab_bg_light_blue"
                     android:gravity="center"
                     android:text="副主任意见"
                     />
@@ -231,16 +275,21 @@
                     android:layout_height="@dimen/tab_row_height1"
                     android:layout_span="3"
                     android:background="@drawable/shape_edit_bg"
-                    android:text=""/>
+                    android:text=""
+                    android:textSize="@dimen/tab_et_size"/>
 
 
             </TableRow>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#DCDCDC"/>
             <!--主任意见-->
             <TableRow android:layout_marginTop="1dp">
 
                 <TextView
                     android:layout_height="match_parent"
-                    android:background="@color/tab_bg_green"
+                    android:background="@color/tab_bg_light_blue"
                     android:gravity="center"
                     android:text="主任意见"
                     />
@@ -250,46 +299,57 @@
                     android:layout_height="@dimen/tab_row_height1"
                     android:layout_span="3"
                     android:background="@drawable/shape_edit_bg"
-                    android:text=""/>
+                    android:text=""
+                    android:textSize="@dimen/tab_et_size"/>
 
 
             </TableRow>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#DCDCDC"/>
             <!--销假时间、实际天数-->
             <TableRow android:layout_marginTop="1dp">
 
                 <TextView
                     android:layout_height="match_parent"
-                    android:background="@color/tab_bg_green"
+                    android:background="@color/tab_bg_light_blue"
                     android:gravity="center"
                     android:text="销假时间"
                     />
 
-                <EditText
+                <TextView
                     android:id="@+id/backdate"
                     android:layout_width="@dimen/tab_col_width"
                     android:layout_height="@dimen/tab_row_height"
                     android:background="@drawable/shape_edit_bg"
-                    android:text=""/>
+                    android:text=""
+                    android:textSize="@dimen/tab_et_size"/>
 
                 <TextView
                     android:layout_height="match_parent"
-                    android:background="@color/tab_bg_green"
+                    android:background="@color/tab_bg_light_blue"
                     android:gravity="center"
                     android:text="实际天数"
                     />
 
-                <EditText
+                <TextView
                     android:id="@+id/days"
                     android:layout_width="@dimen/tab_col_width"
                     android:layout_height="@dimen/tab_row_height"
                     android:background="@drawable/shape_edit_bg"
                     android:text=""
+                    android:textSize="@dimen/tab_et_size"
                     />
             </TableRow>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#DCDCDC"/>
             <!--按钮-->
-            <TableRow android:layout_marginTop="1dp">
+            <TableRow android:layout_marginTop="5dp">
 
-                <RelativeLayout android:layout_span="4">
+                <RelativeLayout android:layout_span="4" android:background="@color/tab_bg">
 
                     <Button
                         android:id="@+id/bt_submit"
@@ -299,7 +359,7 @@
                         android:minHeight="0dp"
                         android:minWidth="0dp"
                         android:text="提交"
-                        android:textSize="12sp"/>
+                        android:textSize="@dimen/tab_bt_size"/>
 
                     <Button
                         android:id="@+id/bt_save"
@@ -311,7 +371,7 @@
                         android:minHeight="0dp"
                         android:minWidth="0dp"
                         android:text="保存"
-                        android:textSize="12sp"/>
+                        android:textSize="@dimen/tab_bt_size"/>
 
                     <Button
                         android:id="@+id/bt_cancel"
@@ -325,7 +385,7 @@
                         android:minHeight="0dp"
                         android:minWidth="0dp"
                         android:text="取消"
-                        android:textSize="12sp"
+                        android:textSize="@dimen/tab_bt_size"
                         android:visibility="visible"/>
 
                     <Button
@@ -337,11 +397,16 @@
                         android:layout_toStartOf="@+id/bt_cancel"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
+                        android:textColor="#ff0000"
                         android:text="退回"
-                        android:textSize="12sp"
+                        android:textSize="@dimen/tab_bt_size"
                         android:visibility="invisible"/>
                 </RelativeLayout>
             </TableRow>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#DCDCDC"/>
         </TableLayout>
 
         <RelativeLayout
@@ -354,54 +419,61 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="103dp"
                 android:layout_marginStart="103dp"
-                android:layout_marginTop="235dp"
+                android:background="@drawable/button_style2"
                 android:minHeight="0dp"
                 android:minWidth="0dp"
                 android:text="附件上传"
-                                android:textSize="8sp"
-                android:visibility="invisible"
+                android:textSize="@dimen/tab_et_size"
+                android:visibility="visible"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"/>
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="251dp"/>
 
             <Button
                 android:id="@+id/bt_opinion1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="33dp"
+                android:layout_alignLeft="@+id/bt_update"
+                android:layout_alignStart="@+id/bt_update"
+                android:layout_below="@+id/bt_update"
+                android:layout_marginTop="45dp"
+                android:background="@drawable/button_style2"
+                android:drawableLeft="@drawable/button2"
                 android:minHeight="0dp"
                 android:minWidth="0dp"
                 android:text="填写意见"
-                android:textSize="8sp"
-                android:visibility="invisible"
-                android:layout_below="@+id/bt_update"
-                android:layout_alignLeft="@+id/bt_update"
-                android:layout_alignStart="@+id/bt_update"/>
+                android:textSize="@dimen/tab_et_size"
+                android:visibility="visible"/>
 
             <Button
                 android:id="@+id/bt_opinion2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="31dp"
+                android:layout_alignLeft="@+id/bt_opinion1"
+                android:layout_alignStart="@+id/bt_opinion1"
+                android:layout_below="@+id/bt_opinion1"
+                android:layout_marginTop="46dp"
+                android:background="@drawable/button_style2"
+                android:drawableLeft="@drawable/button2"
                 android:minHeight="0dp"
                 android:minWidth="0dp"
                 android:text="填写意见"
-                android:textSize="8sp"
-                android:visibility="invisible"
-                android:layout_below="@+id/bt_opinion1"
-                android:layout_alignLeft="@+id/bt_opinion1"
-                android:layout_alignStart="@+id/bt_opinion1"/>
+                android:textSize="@dimen/tab_et_size"
+                android:visibility="visible"/>
 
             <Button
                 android:id="@+id/bt_opinion3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="33dp"
+                android:layout_marginTop="46dp"
+                android:background="@drawable/button_style2"
+                android:drawableLeft="@drawable/button2"
                 android:minHeight="0dp"
                 android:minWidth="0dp"
                 android:text="填写意见"
-                android:textSize="8sp"
-                android:visibility="invisible"
+                android:textSize="@dimen/tab_et_size"
+                android:visibility="visible"
                 android:layout_below="@+id/bt_opinion2"
                 android:layout_alignLeft="@+id/bt_opinion2"
                 android:layout_alignStart="@+id/bt_opinion2"/>

@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Leave</string>
+    <string-array name="languages">
+        <item>--请选择--</item>
+        <item>婚假</item>
+        <item>事假</item>
+        <item>病假</item>
+        <item>调休假</item>
+    </string-array>
 </resources>

@@ -2,6 +2,7 @@ package leave.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -29,5 +30,6 @@ public class CacheUtil {
         mEditor.putString(key, new GsonBuilder().create().toJson(obj));
         mEditor.commit();
         mEditor.clear();
+        Toast.makeText(mContext, "保存成功！", Toast.LENGTH_SHORT).show();
     }
 }

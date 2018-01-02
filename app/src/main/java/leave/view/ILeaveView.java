@@ -11,4 +11,5 @@ import leave.bean.LeaveRoot;
 public interface ILeaveView extends IBaseView {
     void onInitAppliesSuccess(LeaveRoot root);
     void onInitApprovesSuccess(LeaveRoot root);
+
 }

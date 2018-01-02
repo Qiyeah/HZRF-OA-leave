@@ -63,33 +63,40 @@ public class LeaveManagerActivity extends BaseActivity implements ILeaveView {
 
     private LeavePresenter mPresenter = null;
 
-    private List<LeaveBean> mLeaveList = new ArrayList<>();// 待批列表数据
+    private List<LeaveBean> mDraftList = new ArrayList<>();// 待批列表数据
 
-    private List<LeaveBean> mApproveList  = new ArrayList<>();//已批列表数据
+    private List<LeaveBean> mApproveList = new ArrayList<>();//已批列表数据
 
     private LeaveBean mCacheApply;//用户缓存的请休假申请
     private FragmentPagerAdapter mAdapter;
     private List<BaseFragment> mTabs = new ArrayList<BaseFragment>();
     private ViewPager.OnPageChangeListener mPageChangeListener;
+    private int index = 0;
 
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 //        if (RESULT_OK == resultCode){
-            switch (resultCode) {
-                case RequestCode.NEW:
-                    mCacheApply = (LeaveBean) data.getSerializableExtra(Constants.cacheApplyKey);
-                    if (null != mCacheApply)
-                        mLeaveList.add(mCacheApply);
-                    changeTabs(0);
-                    break;
-                case RequestCode.DRAFT:
-                    changeTabs(0);
-                    break;
-                case RequestCode.APPROVE:
-                    changeTabs(1);
-                    break;
-            }
+        LogUtil.e("resultCode = " + resultCode);
+        mDraftList.remove(mDraftList.indexOf(mCacheApply));
+        switch (resultCode) {
+            case RequestCode.NEW:
+                mCacheApply = (LeaveBean) data.getSerializableExtra(Constants.cacheApplyKey);
+                mDraftList.add(mCacheApply);
+                mTabs.get(index).notifyDataChange(mDraftList);
+                break;
+            case RequestCode.DRAFT:
+                mCacheApply = (LeaveBean) data.getSerializableExtra(Constants.cacheApplyKey);
+                mDraftList.add(mCacheApply);
+                mTabs.get(index).notifyDataChange(mDraftList);
+                break;
+            case RequestCode.APPROVE:
+                mTabs.get(index).notifyDataChange(mApproveList);
+                break;
+        }
+       // changeTabs();
+
+
 //        }
     }
 
@@ -100,7 +107,15 @@ public class LeaveManagerActivity extends BaseActivity implements ILeaveView {
     public void initData() {
         mPresenter = new LeavePresenter(this);
         mPresenter.initViewData(queryAppliesName, queryApprovesName);
-        mCacheApply = new CacheUtil(getApplicationContext(), cacheApplyFileName).getObject("key", new LeaveBean());
+        mCacheApply = new CacheUtil(getApplicationContext(), cacheApplyFileName).getObject(Constants.cacheApplyKey, new LeaveBean());
+        if (null != mCacheApply) {
+            mDraftList.add(mCacheApply);
+        }
+//        LogUtil.e(" size = "+mDraftList.size());
+//        for (LeaveBean bean : mDraftList) {
+//            LogUtil.e(" reason = "+bean.getReason());
+//        }
+        // LogUtil.e(mCacheApply.toString());
     }
 
     /**
@@ -118,7 +133,8 @@ public class LeaveManagerActivity extends BaseActivity implements ILeaveView {
      */
     @Override
     protected void initView() {
-        mTabs.add(new AppliesFragment());
+
+        mTabs.add(new AppliesFragment(mDraftList));
         mTabs.add(new ApprovedFragment());
 
         if (mTabs != null && mTabs.size() > 0) {
@@ -133,7 +149,6 @@ public class LeaveManagerActivity extends BaseActivity implements ILeaveView {
                     return mTabs.size();
                 }
             };
-            LogUtil.e("" + (mVpContainer == null));
             mVpContainer.setAdapter(mAdapter);
             mPageChangeListener = new ViewPager.OnPageChangeListener() {
                 @Override
@@ -143,13 +158,8 @@ public class LeaveManagerActivity extends BaseActivity implements ILeaveView {
 
                 @Override
                 public void onPageSelected(int position) {
-                    if (position == 0) {
-                        mTvDraft.setBackgroundColor(Color.parseColor("#99CCFF"));
-                        mTvApproved.setBackgroundColor(0xffffffff);
-                    } else if (position == 1) {
-                        mTvApproved.setBackgroundColor(Color.parseColor("#99CCFF"));
-                        mTvDraft.setBackgroundColor(0xffffffff);
-                    }
+                    index = position;
+                    changeTabs();
                 }
 
                 @Override
@@ -157,7 +167,8 @@ public class LeaveManagerActivity extends BaseActivity implements ILeaveView {
 
                 }
             };
-            changeTabs(0);
+            mVpContainer.setOnPageChangeListener(mPageChangeListener);
+            changeTabs();
         }
     }
 
@@ -177,8 +188,8 @@ public class LeaveManagerActivity extends BaseActivity implements ILeaveView {
      */
     @Override
     public void onInitAppliesSuccess(LeaveRoot root) {
-        mLeaveList = root.getRoot();
-        mLeaveList.add(mCacheApply);
+        mDraftList = root.getRoot();
+        mDraftList.add(mCacheApply);
     }
 
     /**
@@ -204,12 +215,13 @@ public class LeaveManagerActivity extends BaseActivity implements ILeaveView {
         Intent intent = new Intent(this, LeaveDetailActivity.class);
         if (null == mCacheApply) {
             mCacheApply = new LeaveBean();
-            mCacheApply.setUname("xxxx");
-            mCacheApply.setDname("dddd");
-            mCacheApply.setMarried(true);
+            mCacheApply.setApplyId(0x1);
+            mCacheApply.setUname("uname");
+            mCacheApply.setDname("dname");
+            mCacheApply.setMarried("is married");
         }
-        intent.putExtra("leave", mCacheApply);
-        intent.putExtra("request_code",RequestCode.NEW);
+        intent.putExtra(Constants.cacheApplyKey, mCacheApply);
+        intent.putExtra("request_code", RequestCode.NEW);
         startActivityForResult(intent, RequestCode.NEW);
     }
 
@@ -225,7 +237,8 @@ public class LeaveManagerActivity extends BaseActivity implements ILeaveView {
      */
     @OnClick(R.id.tv_draft)
     public void onMTvDraftClicked() {
-        changeTabs(0);
+        index = 0;
+        changeTabs();
     }
 
     /**
@@ -233,7 +246,8 @@ public class LeaveManagerActivity extends BaseActivity implements ILeaveView {
      */
     @OnClick(R.id.tv_approved)
     public void onMTvApprovedClicked() {
-        changeTabs(1);
+        index = 1;
+        changeTabs();
     }
 
     // 清除掉所有的选中状态
@@ -242,8 +256,9 @@ public class LeaveManagerActivity extends BaseActivity implements ILeaveView {
         mTvApproved.setBackgroundColor(0xffffffff);
     }
 
-    private void changeTabs(int index) {
+    private void changeTabs() {
         clearSelection();
+
         mVpContainer.setCurrentItem(index, false);
         if (0 == index)
             mTvDraft.setBackgroundColor(Color.parseColor("#99CCFF"));

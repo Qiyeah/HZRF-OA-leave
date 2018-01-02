@@ -15,8 +15,8 @@ public class LeaveBean implements Serializable {
     private int departId;//部门ID
     private String uname;//用户姓名主（申请人）
     private String dname;//部门名称（所在科室）
-    private boolean married;//婚姻状态
-    private int dayt;//请休假天数
+    private String married;//婚姻状态
+    private String dayt;//请休假天数
     private String approvedate;//申请时间(applydate)
     private String begindate;//起时间
     private String enddate;//止时间
@@ -69,19 +69,19 @@ public class LeaveBean implements Serializable {
         this.dname = dname;
     }
 
-    public boolean getMarried() {
+    public String getMarried() {
         return married;
     }
 
-    public void setMarried(boolean married) {
+    public void setMarried(String married) {
         this.married = married;
     }
 
-    public int getDayt() {
+    public String getDayt() {
         return dayt;
     }
 
-    public void setDayt(int dayt) {
+    public void setDayt(String dayt) {
         this.dayt = dayt;
     }
 
@@ -171,5 +171,29 @@ public class LeaveBean implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "LeaveBean{" +
+            "applyId=" + applyId +
+            ", userId=" + userId +
+            ", departId=" + departId +
+            ", uname='" + uname + '\'' +
+            ", dname='" + dname + '\'' +
+            ", married=" + married +
+            ", dayt=" + dayt +
+            ", approvedate='" + approvedate + '\'' +
+            ", begindate='" + begindate + '\'' +
+            ", enddate='" + enddate + '\'' +
+            ", reason='" + reason + '\'' +
+            ", fjLists=" + fjLists +
+            ", opinion1='" + opinion1 + '\'' +
+            ", opinion2='" + opinion2 + '\'' +
+            ", opinion3='" + opinion3 + '\'' +
+            ", backdate='" + backdate + '\'' +
+            ", days='" + days + '\'' +
+            ", type='" + type + '\'' +
+            '}';
     }
 }
